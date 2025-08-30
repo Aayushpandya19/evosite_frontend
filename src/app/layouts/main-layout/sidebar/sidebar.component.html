@@ -1,0 +1,43 @@
+<nav class="sidebar-nav">
+  <!-- Logo -->
+  <div class="logo-container">
+    <h2 class=""><i class="fas fa-building"></i> EvoSite</h2>
+  </div>
+
+  <!-- Navigation Items -->
+  <div class="nav-items">
+    <ul>
+      <li *ngFor="let item of filteredNavItems">
+        <a [routerLink]="item.route"
+           routerLinkActive="active"
+           [routerLinkActiveOptions]="{exact: true}">
+          <i [class]="item.icon"></i>
+          <span>{{ item.label }}</span>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+  <!-- User Info -->
+  <div class="user-info">
+    <div class="user-details">
+
+      <div class="user-text">
+        <p>
+          <i [class]="getRoleIcon()"></i>
+          {{ currentUser?.role }}
+        </p>
+      </div>
+    </div>
+    <div class="profile-logout">
+      <a routerLink="/profile">
+        <i class="fas fa-user-circle"></i>
+        <span>Profile</span>
+      </a>
+      <a class="logout-link" (click)="logout()">
+        <i class="fas fa-sign-out-alt"></i>
+        <span>Logout</span>
+      </a>
+    </div>
+  </div>
+</nav> 

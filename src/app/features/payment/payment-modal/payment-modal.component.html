@@ -1,0 +1,54 @@
+<div class="modal-overlay" *ngIf="showModal" (click)="close()">
+  <div class="modal-content" (click)="$event.stopPropagation()">
+    <div class="modal-header">
+      <h2>Create Payment</h2>
+      <button class="close-btn" (click)="close()">&times;</button>
+    </div>
+
+    <div class="modal-body">
+      <form (ngSubmit)="onSubmit()">
+        <div class="form-group">
+          <label for="amount">Amount</label>
+          <input 
+            type="number" 
+            id="amount" 
+            [(ngModel)]="payment.amount" 
+            name="amount" 
+            required 
+            readonly
+          >
+        </div>
+
+        <div class="form-group">
+          <label for="paidDate">Payment Date</label>
+          <input 
+            type="date" 
+            id="paidDate" 
+            [(ngModel)]="payment.paidDate" 
+            name="paidDate" 
+            required
+          >
+        </div>
+
+        <div class="form-group">
+          <label for="paymentMethod">Payment Method</label>
+          <select 
+            id="paymentMethod" 
+            [(ngModel)]="payment.paymentMethod" 
+            name="paymentMethod" 
+            required
+          >
+            <option *ngFor="let method of paymentMethods" [value]="method">
+              {{method}}
+            </option>
+          </select>
+        </div>
+
+        <div class="form-actions">
+          <button type="button" class="btn-cancel" (click)="close()">Cancel</button>
+          <button type="submit" class="btn-submit">Create Payment</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div> 
